@@ -1,3 +1,4 @@
+# Keep Me Up
 Ping websites to prevend them from spinning down
 
 ## Installation
@@ -5,6 +6,11 @@ Ping websites to prevend them from spinning down
   * Add `Upfile` with a list of websites (full URL e.g. `http://www.thefeedbackbutton.com/`) on separate lines
   * Upload to heroku.
   * schedule worker: `heroku addons:add scheduler:standard` and add task to it `rake up:all`
+
+## Debugging
+
+  * run `heroku logs -t` to see if the pings are not failing.
+
 ## Deadman's Snitch
 
   Set `KMA_DMS_KEY` to your [Deadman's Snitch](https://deadmanssnitch.com) hash and get email alerts on failed pings with:
