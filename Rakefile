@@ -1,5 +1,4 @@
-require 'net/http'
-
+require 'open-uri'
 namespace :up do
   desc "Keep me up"
   task :all do
@@ -13,11 +12,7 @@ namespace :up do
   desc "Keep host up"
   task :host, :host do |t, host|
     print_and_flush "Keeping #{host} up... "
-    url = URI.parse(host)
-    req = Net::HTTP::Get.new(url.path)
-    res = Net::HTTP.start(url.host, url.port) {|http|
-        http.request(req)
-    }
+    get_url host
     puts "ok"
   end
 end
@@ -25,4 +20,8 @@ end
 def print_and_flush(str)
   print str
   $stdout.flush
+end
+
+def get_url(url)
+    response = URI.parse(url).read
 end
