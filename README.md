@@ -5,3 +5,12 @@ Ping websites to prevend them from spinning down
   * Add `Upfile` with a list of websites (full URL e.g. `http://www.thefeedbackbutton.com/`) on separate lines
   * Upload to heroku.
   * schedule worker: `heroku addons:add scheduler:standard` and add task to it `rake up:all`
+## Deadman's Snitch
+
+  Set `KMA_DMS_KEY` to your [Deadman's Snitch](https://deadmanssnitch.com) hash and get email alerts on failed pings with:
+
+  `heroku config:add KMA_DMS_KEY=55592ba555`
+
+  You can get your hash id from the URL provided by DMS: `https://nosnch.in/55592ba555`
+
+  Optionally, you can set a custom message: `heroku config:add KMA_MESSAGE="Hello from keep-me-up"`

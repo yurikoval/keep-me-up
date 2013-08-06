@@ -7,12 +7,23 @@ namespace :up do
       host = line.chomp
       task('up:host').execute(host)
     end
+    task('up:deadmanssnitch').execute if ENV['KMA_DMS_KEY']
   end
 
   desc "Keep host up"
   task :host, :host do |t, host|
     print_and_flush "Keeping #{host} up... "
     get_url host
+    puts "ok"
+  end
+
+  desc "Ping deadmanssnitch.com"
+  task :deadmanssnitch do
+    message = URI.escape(ENV['KMA_MESSAGE'] || 'Hello from keep-me-alive')
+    key = ENV['KMA_DMS_KEY']
+    url = "https://nosnch.in/#{key}?m=#{message}"
+    print_and_flush "Notifying #{url} ... "
+    get_url url
     puts "ok"
   end
 end
