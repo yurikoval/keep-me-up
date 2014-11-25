@@ -14,7 +14,6 @@ namespace :up do
   task :host, :host do |t, host|
     print_and_flush "Keeping #{host} up... "
     get_url host
-    puts "ok"
   end
 
   desc "Ping deadmanssnitch.com"
@@ -34,5 +33,10 @@ def print_and_flush(str)
 end
 
 def get_url(url)
-    response = URI.parse(url).read
+  begin
+    URI.parse(url).read
+    puts "ok"
+  rescue Exception => e
+    puts "failed: #{e.message}"
+  end
 end
