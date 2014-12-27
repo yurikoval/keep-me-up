@@ -20,3 +20,7 @@ Ping websites to prevend them from spinning down
   You can get your hash id from the URL provided by DMS: `https://nosnch.in/55592ba555`
 
   Optionally, you can set a custom message: `heroku config:add KMA_MESSAGE="Hello from keep-me-up"`
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yurikoval/keep-me-up/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
